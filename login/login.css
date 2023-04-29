@@ -1,0 +1,36 @@
+.title {
+    font-weight: bold;
+    color: black;
+    font-size: 24px;
+}
+
+.btn-login {
+    background: #d70018;
+    color: white;
+    border-radius: 40px;
+}
+.btn-login:hover {
+    background: #d70018;
+    color: white;
+}
+
+.create-acc span {
+    color: #777;
+}
+.link {
+    color: #d70018;
+    text-decoration: none;
+}
+
+.outline-custom {
+    border: 1px solid white;
+    background-color: #d70018;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.outline-custom:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid white;
+}

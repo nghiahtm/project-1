@@ -1,0 +1,128 @@
+p {
+    margin: 0;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/*HEADER*/
+#header {
+    background: #d70018;
+    color: white;
+    position: sticky;
+}
+
+#header label {
+    display: none;
+}
+
+#header .form-control {
+    background-color: transparent;
+    border: 0 solid;
+    display: flex;
+    outline: none;
+}
+
+#header input[type=search]:focus {
+    outline: none;
+}
+
+#header .form-group {
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    background: white;
+    padding-left: 4px;
+}
+
+#header #search-field svg {
+    color: gray;
+}
+
+#header .button-custom-color {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#header #icon-smember {
+    background: white;
+}
+
+#header span.quality {
+    position: relative;
+    top: 5px;
+    right: 17px;
+}
+
+#header img {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+#header .button-custom {
+    height: 40px;
+    color: white;
+    display: flex;
+}
+
+/*MAIN*/
+#main a {
+    font-weight: bold;
+}
+
+#main .background-tag {
+    background: #fca5a5;
+    border-radius: 16px;
+}
+
+#main .button-selected {
+    background: #ef4444;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 8px;
+    cursor: pointer;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+#main .button-unselected {
+    background: transparent;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 8px;
+    cursor: pointer;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#main .production {
+    border-radius: 16px;
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#main .name-product {
+    font-weight: 500;
+    color: black;
+    cursor: pointer;
+}
+
+#main .price {
+    font-weight: bold;
+    color: #d70018;
+}
+
+#main .type-filter {
+    color: black;
+    font-weight: 400;
+}
+
+#main .filter {
+    border-radius: 4px;
+    background: #f3f4f6;
+}

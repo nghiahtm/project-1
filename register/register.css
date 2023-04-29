@@ -1,0 +1,45 @@
+.title {
+    font-weight: bold;
+    color: black;
+    font-size: 24px;
+}
+.outline-custom {
+    border: 1px solid white;
+    background-color: #d70018;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.outline-custom:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid white;
+}
+.btn-login {
+    background: #d70018;
+    color: white;
+    border-radius: 40px;
+}
+.btn-login:hover {
+    background: #d70018;
+    color: white;
+}
+.create-acc span {
+    color: #777;
+}
+.link {
+    color: #d70018;
+    text-decoration: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#main .btn-outline-list {
+    background-color: #d70018;
+    outline:1px solid gray;
+}
+
+
