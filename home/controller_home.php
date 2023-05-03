@@ -20,7 +20,12 @@ if (isset($_GET['id_technology'])) {
             LEFT JOIN technology ON technology.id = categories.id_technology 
             WHERE technology.id =' .$id_technology);
 }
-
+if(isset($_POST['decrement'])){
+    $dataProducts = responseData('SELECT * FROM products ORDER BY price_product DESC');
+}
+if(isset($_POST['increment'])){
+    $dataProducts = responseData('SELECT * FROM products ORDER BY price_product');
+}
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $dataProducts = responseData(

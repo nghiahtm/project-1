@@ -36,10 +36,27 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
+/*MAIN*/
 #main .btn-outline-list {
     background-color: #d70018;
     outline:1px solid gray;
+}
+
+#main .error {
+    border: 1px solid crimson;
+    display: inline-block;
+    position: relative;
+}
+#main .text-error {
+    color: crimson;
+}
+#main .eyes {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding-right: 5px;
 }
 
 

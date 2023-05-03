@@ -55,7 +55,11 @@ a {
     top: 5px;
     right: 17px;
 }
-
+#header .form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 #header img {
     width: 20px;
     height: 20px;
@@ -68,16 +72,30 @@ a {
     display: flex;
 }
 
+#header .border-home {
+    border: 1px solid white;
+    padding: 4px;
+}
+
 /*MAIN*/
 #main a {
     font-weight: bold;
 }
 
+#main .border-input {
+    border: 1px solid black;
+    display: inline-block;
+    position: relative;
+}
 #main .background-tag {
     background: #fca5a5;
     border-radius: 16px;
 }
-
+#main input {
+    border: none;
+    width: 90%;
+    outline: none;
+}
 #main .button-selected {
     background: #ef4444;
     border-radius: 8px;
