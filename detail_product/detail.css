@@ -1,0 +1,28 @@
+#main .bg-detail-product {
+    background: #d70018;
+    border-radius: 16px;
+    height: 20rem;
+}
+
+#main #features h4 {
+    color: white;
+    margin: 0;
+}
+
+#main #price h4{
+    color: #d70018;
+}
+
+#main .bg-buy-now {
+    background: #d70018;
+    border-radius: 8px;
+    color: white;
+    margin-right: 8px;
+}
+
+#main .bg-buy-later {
+    border: 1px #d70018 solid;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+}

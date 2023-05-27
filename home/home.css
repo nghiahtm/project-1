@@ -12,7 +12,9 @@ a {
 #header {
     background: #d70018;
     color: white;
-    position: sticky;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 #header label {
@@ -78,6 +80,10 @@ a {
 }
 
 /*MAIN*/
+#main {
+    position: relative;
+    top: 4rem;
+}
 #main a {
     font-weight: bold;
 }

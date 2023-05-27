@@ -13,3 +13,7 @@ function responseData ($query){
     $conn -> close();
     return $data;
 }
+
+function setHeaderLocation($url){
+    header("location: $url");
+}
