@@ -1,6 +1,7 @@
 <?php
 include "../database/db_helper.php";
 
+session_start();
 $dataTechnology = responseData('SELECT * FROM technology');
 $dataProducts = [];
 $dataCategory = responseData('SELECT * FROM categories');

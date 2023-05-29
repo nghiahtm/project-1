@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 $_SESSION['error'] = 'Sai tài khoản hoặc mật khẩu';
                 header("location: login.php");
             } else {
-                $_SESSION['username'] = $data[0]['username'];
+                $_SESSION['user_info'] = $data[0];
                 unset($_SESSION['error']);
                 unset($_SESSION['phone']);
                 header("Location: ../home/home.php");
