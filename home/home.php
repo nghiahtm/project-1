@@ -96,7 +96,8 @@ include "controller_home.php" ?>
             <?php
             foreach ($dataProducts as $product) {
                 ?>
-                <a href="../detail_product/detail_product.php" class="d-flex flex-column production p-3 m-2">
+<!--                ../detail_product/detail_product.php"-->
+                <a href="#" class="d-flex flex-column production p-3 m-2">
                     <img class="img-fluid"
                          src="
                         <?php

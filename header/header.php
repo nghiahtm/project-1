@@ -69,7 +69,7 @@
                         echo isset($_SESSION['user_info']['user_name'])?$_SESSION['user_info']['user_name']:'Đăng nhập';
                         ?></p>
                 </a>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">TEST-DROPDOWN</button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Tablet</a></li>
                     <li><a class="dropdown-item" href="#">Smartphone</a></li>
