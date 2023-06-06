@@ -6,7 +6,7 @@ include "controller_login.php";
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="login.css">
+<!--    <link rel="stylesheet" href="login.css">-->
     <link rel="stylesheet" href="../register/register.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
@@ -60,7 +60,7 @@ include "controller_login.php";
                 </div>
             </div>
             <div class="mb-3 d-flex justify-content-center">
-                <button class = "w-50 btn btn-lg btn-login " type="submit" name="login">Đăng nhập</button>
+                <button class = "w-50 btn btn-lg bg-danger text-white rounded-5" type="submit" name="login">Đăng nhập</button>
             </div>
         </form>
         <div class="create-acc">

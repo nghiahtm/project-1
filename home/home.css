@@ -15,6 +15,7 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 999;
 }
 
 #header label {
@@ -52,7 +53,7 @@ a {
     background: white;
 }
 
-#header span.quality {
+#header span.quantity {
     position: relative;
     top: 5px;
     right: 17px;
@@ -149,4 +150,9 @@ a {
 #main .filter {
     border-radius: 4px;
     background: #f3f4f6;
+}
+
+#main .sold-out {
+    text-decoration-line: line-through;
+    color: darkgray;
 }

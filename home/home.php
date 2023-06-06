@@ -96,21 +96,23 @@ include "controller_home.php" ?>
             <?php
             foreach ($dataProducts as $product) {
                 ?>
-<!--                ../detail_product/detail_product.php"-->
-                <a href="#" class="d-flex flex-column production p-3 m-2">
+                <a href="../detail_product/detail_product.php?id=<?php echo $product['id_product']?>" class="d-flex flex-column production p-3 m-2">
                     <img class="img-fluid"
                          src="
                         <?php
                          echo $product['link_image']
                          ?>" alt="">
-                    <p class="name-product"><?php
-                        echo $product['name_product']
-                        ?></p>
-                    <p class="price mt-auto"> <?php
-                        $money = number_format($product['price_product'], 0,
-                            '', '.');;
-                        echo $money
-                        ?> đ</p>
+                    <p class="name-product"><?php echo $product['name_product'] ?></p>
+                    <div class="d-flex flex-row mt-auto">
+                        <p class="price <?php if($product['quantity'] == 0) echo 'sold-out'?>"> <?php
+                            $money = number_format($product['price'], 0,
+                                '', '.');
+                            echo $money
+                            ?> đ</p>
+                        <?php if($product['quantity'] == 0) {?>
+                            <p class="price mx-1">Hết hàng</p>
+                        <?php } ?>
+                    </div>
                 </a>
                 <?php
             }
@@ -120,4 +122,3 @@ include "controller_home.php" ?>
         <script src="../home/home.js"></script>
 </body>
 </html>
-

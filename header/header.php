@@ -1,3 +1,4 @@
+<?php include "count_order.php" ?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,12 +8,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../home/home.css">
-    <style>
-        #drop{
-            position: relative;
-            z-index: 100;
-        }
-    </style>
 </head>
 <body>
 <div id="drop">
@@ -26,7 +21,8 @@
             <div class="col-6 mx-0">
                 <div id="search-field" class="d-flex form-group">
                     <label for="search" class="form-group">
-                        <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                        <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas"
+                             data-icon="search"
                              role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                              class="svg-inline--fa fa-search">
                             <path fill="currentColor"
@@ -37,7 +33,7 @@
                 </div>
             </div>
             <div class="col-5 mx-0 d-flex justify-content-end">
-                <a href=""
+                <a href="../orders/order.php"
                    class="btn button-custom button-custom-color btn-sm d-flex justify-content-between mx-2 align-items-center"
                    role="button">
                                    <span class="d-flex">
@@ -54,26 +50,45 @@
                                                            class="cls-1"></path> <path
                                                            d="M23.47,34.17h-18A4.58,4.58,0,0,1,.91,29.24L2.5,8.78A1.44,1.44,0,0,1,3.94,7.46H25a1.43,1.43,0,0,1,1.43,1.32L28,29.24A4.57,4.57,0,0,1,23.47,34.17Z"
                                                            class="cls-1"></path></g></g></svg>
-                                       <span class="quality">
-                                           0
+                                       <span class="quantity" id="quantity">
+                                           <?php
+                                           echo isset($_SESSION['orders'])?$_SESSION['orders']:0 ?>
                                        </span>
                                    </span>
                     <p class="my-0">Giỏ hàng</p>
                 </a>
-                <a href="../login/login.php"
-                   rel="noopener noreferrer" target="_self"
-                   class="btn button-custom button-custom-color d-flex flex-column btn-sm justify-content-center align-items-center">
-                    <img src="../images/user.png" alt="">
-                    <p class="my-0"><?php
+                <?php
+                $name = $_SESSION['user_info']['user_name'];
+                if (empty($name)) {
+                    ?>
+                    <a href="../login/login.php"
+                       rel="noopener noreferrer" target="_self"
+                       class="btn button-custom button-custom-color d-flex flex-column btn-sm justify-content-center align-items-center">
+                        <img src="../images/user.png" alt="">
+                        <p class="my-0">Đăng nhập</p>
+                    </a>
+                    <?php
+                } else {
+                    ?>
+                    <button type="button"
+                            class="my-0 btn button-custom button-custom-color d-flex flex-column btn-sm justify-content-center align-items-center"
+                            data-bs-toggle="dropdown">
+                        <img src="../images/user.png" alt="">
+                        <?php
                         session_start();
-                        echo isset($_SESSION['user_info']['user_name'])?$_SESSION['user_info']['user_name']:'Đăng nhập';
-                        ?></p>
-                </a>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">TEST-DROPDOWN</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Tablet</a></li>
-                    <li><a class="dropdown-item" href="#">Smartphone</a></li>
-                </ul>
+                        echo $_SESSION['user_info']['user_name'];
+                        ?>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Thông tin người dùng</a></li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li><a class="dropdown-item" href="../header/logout.php">Đăng xuất</a></li>
+                    </ul>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -81,4 +96,5 @@
 </div>
 </body>
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 </html>
