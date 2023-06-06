@@ -4,16 +4,6 @@
     font-size: 24px;
 }
 
-.btn-login {
-    background: #d70018;
-    color: white;
-    border-radius: 40px;
-}
-.btn-login:hover {
-    background: #d70018;
-    color: white;
-}
-
 .create-acc span {
     color: #777;
 }

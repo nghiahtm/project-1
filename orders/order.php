@@ -20,8 +20,13 @@ global $dataCarts;
         <h4 class="text-danger">
            Giỏ hàng
         </h4>
-        <button type="submit" class="btn btn-danger text-white">Xoá tất cả</button>
         <div>
+            <?php if(empty($dataCarts)){?>
+                <h5>Chưa có sản phẩm trong giỏ hàng</h5>
+            <?php }else {?>
+                <form action="" method="post">
+                    <button type="submit" name="removeAll" class="btn btn-danger text-white">Xoá tất cả</button>
+                </form>
             <?php foreach ($dataCarts as $dataCart) {?>
                 <div class="d-flex flex-row">
                     <img src="<?php echo $dataCart['link_image']?>" alt="" width="120" height="120">
@@ -37,7 +42,7 @@ global $dataCarts;
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } }?>
         </div>
     </div>
     </body>

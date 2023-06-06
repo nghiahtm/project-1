@@ -6,7 +6,6 @@ include "controller_login.php";
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.css">
-<!--    <link rel="stylesheet" href="login.css">-->
     <link rel="stylesheet" href="../register/register.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
