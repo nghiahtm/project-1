@@ -5,8 +5,8 @@ session_start();
 if (isset($_POST['username']) && isset($_POST['password'])) {
     if (!isSuccess()) {
         header("location: login.php");
-    } else{
-        if(isset($_POST['login'])){
+    } else {
+        if (isset($_POST['login'])) {
             $postUserName = $_POST['username'];
             $postPassword = $_POST['password'];
             $data = responseData("SELECT * FROM `users` where phone_number = '$postUserName' and `passwords` = '$postPassword'");
@@ -24,7 +24,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     }
 }
 
-function isSuccess () {
+function isSuccess()
+{
     if (empty($_POST['username']) && empty($_POST['password'])) {
         $_SESSION['error'] = 'Nhập tài khoản và mật khẩu';
         return false;

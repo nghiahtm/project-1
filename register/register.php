@@ -1,5 +1,6 @@
 <?php
 include "../header/count_order.php";
+include "controller_register.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,9 +9,7 @@ include "../header/count_order.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="register.css">
-    <link rel="stylesheet" href="../home/home.css">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
+
     <title>Project1</title>
 </head>
 <body>
@@ -20,13 +19,17 @@ include "../header/count_order.php";
 <div id="main">
     <form action="" method="post">
         <div class="container d-flex align-items-center flex-column">
-            <div class="d-flex my-5">
+            <div class="d-flex flex-column my-5 text-center">
                 <p class="title">Đăng ký tài khoản</p>
+                <span class="text-danger bg-danger-subtle rounded-3">
+                    <?php echo showError($_GET['error'])?>
+                </span>
             </div>
             <div class="mb-3 w-50">
                 <div class="w-100 border-input" id="border-phone">
-                    <input class="input-group w-100" id="phone" type="text" name="phone-number"
+                    <input class="input-group" id="phone" type="text" name="phone-number"
                            maxlength="10"
+                           value="<?php echo $_SESSION['phone']?>"
                            placeholder="Nhập số điện thoại"
                     >
                 </div>
@@ -59,7 +62,7 @@ include "../header/count_order.php";
             </div>
             <div class="mb-3 w-50">
                 <div class="w-100 border-input" id="border-re-password">
-                    <input class="input-group" id="re-password" name="password" type="password"
+                    <input class="input-group" id="re-password" name="re-password" type="password"
                            placeholder="Nhập lại mật khẩu">
                     <span class="eyes" id="ic-re-password">
                     <svg id="eye" width="24" height="24" version="1.1" viewBox="0 0 20 20" x="0px" y="0px"
@@ -81,7 +84,7 @@ include "../header/count_order.php";
             <div class="mb-3 w-75 d-flex justify-content-center">
                 <button class="w-50 btn btn-lg bg-danger text-white rounded-5" id="register" name="register"
                         type="submit"
-                        onclick="checkValidate()">Đăng ký
+                        >Đăng ký
                 </button>
             </div>
             <div class="create-acc">
@@ -92,7 +95,8 @@ include "../header/count_order.php";
             </div>
         </div>
     </form>
-    <script src="register.js"></script>
 </div>
 </body>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 </html>
