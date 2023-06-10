@@ -1,11 +1,13 @@
-<?php include "count_order.php" ?>
+<?php
+include "count_order.php";
+?>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Project1</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../home/home.css">
 </head>
@@ -19,18 +21,23 @@
                 </a>
             </div>
             <div class="col-6 mx-0">
-                <div id="search-field" class="d-flex form-group">
-                    <label for="search" class="form-group">
-                        <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas"
-                             data-icon="search"
-                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                             class="svg-inline--fa fa-search">
-                            <path fill="currentColor"
-                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                        </svg>
-                    </label>
-                    <input type="search" class="form-control flex-grow-1" id="search" placeholder="Tìm kiếm">
-                </div>
+                    <form action="../header/search_location.php" method="post" class="d-flex bd-highlight">
+                        <div id="search-field" class="flex-fill bd-highlight">
+                            <label for="search" class="form-group">
+                                <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas"
+                                     data-icon="search"
+                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                     class="svg-inline--fa fa-search">
+                                    <path fill="currentColor"
+                                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                </svg>
+                                <input type="search" class="form-control" name="search"
+                                       placeholder="Tìm kiếm">
+                            </label>
+                        </div>
+                        <input type="submit" value="Tìm kiếm"
+                               class="btn bg-danger text-white btn-outline-light">
+                    </form>
             </div>
             <div class="col-5 mx-0 d-flex justify-content-end">
                 <a href="../orders/order.php"
@@ -52,7 +59,7 @@
                                                            class="cls-1"></path></g></g></svg>
                                        <span class="quantity" id="quantity">
                                            <?php
-                                           echo isset($_SESSION['orders'])?$_SESSION['orders']:0 ?>
+                                           echo isset($_SESSION['orders']) ? $_SESSION['orders'] : 0 ?>
                                        </span>
                                    </span>
                     <p class="my-0">Giỏ hàng</p>
@@ -92,7 +99,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </body>
 <script src="../js/bootstrap.bundle.min.js"></script>

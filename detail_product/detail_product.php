@@ -86,5 +86,3 @@ global $responseProduct;
 </body>
 <script src="../header/get_count.js"></script>
 </html>
-
-<!--    ../header/count_order.php?id=--><?php //echo $responseProduct['id_product']?>
