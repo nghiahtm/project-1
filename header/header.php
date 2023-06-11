@@ -81,10 +81,12 @@ include "count_order.php";
                             class="my-0 btn button-custom button-custom-color d-flex flex-column btn-sm justify-content-center align-items-center"
                             data-bs-toggle="dropdown">
                         <img src="../images/user.png" alt="">
-                        <?php
-                        session_start();
-                        echo $_SESSION['user_info']['user_name'];
-                        ?>
+                      <span id="name-user">
+                            <?php
+                            session_start();
+                            echo $_SESSION['user_info']['user_name'];
+                            ?>
+                      </span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Thông tin người dùng</a></li>

@@ -25,7 +25,7 @@ global $dataResult;
         </div>
         <div class="my-3">
             <?php if (empty($dataResult)) { ?>
-                <span>Không có sản phẩm cần tìm kiếm</span>
+                <span>Không có sản phẩm cần tìm kiếm với từ khoá <?php echo $_GET['search'] ?></span>
             <?php } else { ?>
                 <span>Có <?php echo count($dataResult) ?> kết quả cho từ khoá "<?php echo $_GET['search'] ?>"</span>
             <?php } ?>

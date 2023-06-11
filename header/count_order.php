@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['orders'])){
+if(!empty($_POST['orders'])){
     $_SESSION['orders'] = $_POST['orders'];
     echo $_SESSION['orders'];
    if($_SESSION['orders'] <= 5){

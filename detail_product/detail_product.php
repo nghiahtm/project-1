@@ -9,14 +9,12 @@ global $responseProduct;
     <meta charset="UTF-8">
     <title>Project1</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../home/home.css">
     <link rel="stylesheet" href="detail.css">
     <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
 </head>
 <body>
 <div id="header">
-    <?php include"../header/header.php" ?>
+    <?php include "../header/header.php" ?>
 </div>
 <div id="main">
     <div class="container px-0" id="category">
@@ -35,9 +33,9 @@ global $responseProduct;
                                 '', '.');
                             echo "$money đ" ?>
                         </h4>
-                        <?php if ($responseProduct['quantity'] == 0) {?>
-                        <h4 class="price mx-1">Hết hàng</h4>
-                        <?php }?>
+                        <?php if ($responseProduct['quantity'] == 0) { ?>
+                            <h4 class="price mx-1">Hết hàng</h4>
+                        <?php } ?>
                     </div>
                     <div class="d-flex flex-wrap m-4">
                         <?php
@@ -59,24 +57,36 @@ global $responseProduct;
                                             ?>
                                             <br>Card: <?php echo $product['vga'] ?>
                                         <?php } ?>
-                                        <br> Giá: <?php if($product['count'] !=0) {
+                                        <br> Giá: <?php if ($product['count'] != 0) {
                                             $money = number_format($product['price'], 0,
-                                                '', '.'); echo "$money đ";
-                                        }else {
+                                                '', '.');
+                                            echo "$money đ";
+                                        } else {
                                             echo "Hết hàng";
-                                        }?>
+                                        } ?>
                                     </button>
                                 </div>
                             </form>
                         <?php } ?>
                     </div>
-                    <div class="d-flex flex-wrap">
-                        <button class="flex-grow-1 d-flex align-items-center justify-content-center bg-buy-now">Mua Ngay
+                    <?php if($responseProduct['quantity'] == 0){?>
+                    <div class="d-flex bd-highlight">
+                        <div class="bg-white text-danger btn-outline-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">
+                            <h5>Hàng đã hết xin hãy đợi</h5>
+                        </div>
+                    </div>
+                    <?php }else{?>
+                    <div class="d-flex bd-highlight">
+                        <button id ="buy-now" class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
+                            Mua Ngay
                         </button>
                             <button class="bg-buy-later" id="cart" name="count">
-                                <input type="text" hidden="hidden" id="id-product" value="<?php echo $responseProduct['id_product'] ?>">
+                                <input type="text" hidden="hidden" id="id-product"
+                                       value="<?php echo $responseProduct['id_product'] ?>">
                                 <img src="https://cdn2.cellphones.com.vn/50x,webp,q70/media/wysiwyg/add-to-cart.png"
-                                     width="50" alt="cart-icon"></button>
+                                     width="50" alt="cart-icon">
+                            </button>
+                        <?php }?>
                     </div>
                 </div>
             </div>

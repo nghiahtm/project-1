@@ -27,14 +27,15 @@ global $dataCarts;
                 <form action="" method="post">
                     <button type="submit" name="removeAll" class="btn btn-danger text-white">Xoá tất cả</button>
                 </form>
-            <?php foreach ($dataCarts as $dataCart) {?>
+            <?php foreach ($dataCarts as $dataCart) {
+                ?>
                 <div class="d-flex flex-row">
                     <img src="<?php echo $dataCart['link_image']?>" alt="" width="120" height="120">
                     <div class="d-flex flex-column mx-2">
                         <h5> <?php echo $dataCart['name_product']?></h5>
-                        <h5> <?php $money = number_format($dataCart['price'], 0,
+                        <h5 class="text-danger"> <?php $money = number_format($dataCart['price'], 0,
                                 '', '.');
-                        echo $money?></h5>
+                        echo $money?>đ</h5>
                         <div>
                             <button>+</button>
                             <span>5</span>
