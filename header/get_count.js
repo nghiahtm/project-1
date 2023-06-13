@@ -24,7 +24,8 @@ $(document).ready(
                     if (response === "login") {
                         alert("Đăng nhập để mua hàng")
                     }else {
-                        callDataOrder(count,id)
+                        callDataOrder(count,id);
+                        window.location.href = '../orders/order.php';
                     }
                 }
             })
@@ -40,6 +41,7 @@ function callDataOrder(count,id) {
             type: 'POST',
             data: {orders: count, id_product: id},
             success: function (response) {
+                console.log(response);
                 $("#quantity").text(response);
             },
         })

@@ -10,6 +10,7 @@ include "count_order.php";
     <title>Project1</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../home/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
 <div id="drop">
@@ -21,23 +22,23 @@ include "count_order.php";
                 </a>
             </div>
             <div class="col-6 mx-0">
-                    <form action="../header/search_location.php" method="post" class="d-flex bd-highlight">
-                        <div id="search-field" class="flex-fill bd-highlight">
-                            <label for="search" class="form-group">
-                                <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas"
-                                     data-icon="search"
-                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                     class="svg-inline--fa fa-search">
-                                    <path fill="currentColor"
-                                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                                </svg>
-                                <input type="search" class="form-control" name="search"
-                                       placeholder="Tìm kiếm">
-                            </label>
-                        </div>
-                        <input type="submit" value="Tìm kiếm"
-                               class="btn bg-danger text-white btn-outline-light">
-                    </form>
+                <form action="../header/search_location.php" method="post" class="d-flex bd-highlight">
+                    <div id="search-field" class="flex-fill bd-highlight">
+                        <label for="search" class="form-group">
+                            <svg height="15" width="15" aria-hidden="true" focusable="false" data-prefix="fas"
+                                 data-icon="search"
+                                 role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                 class="svg-inline--fa fa-search">
+                                <path fill="currentColor"
+                                      d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                            </svg>
+                            <input type="search" class="form-control" name="search"
+                                   placeholder="Tìm kiếm">
+                        </label>
+                    </div>
+                    <input type="submit" value="Tìm kiếm"
+                           class="btn bg-danger text-white btn-outline-light">
+                </form>
             </div>
             <div class="col-5 mx-0 d-flex justify-content-end">
                 <a href="../orders/order.php"
@@ -59,7 +60,8 @@ include "count_order.php";
                                                            class="cls-1"></path></g></g></svg>
                                        <span class="quantity" id="quantity">
                                            <?php
-                                           echo isset($_SESSION['orders']) ? $_SESSION['orders'] : 0 ?>
+                                           global $countOrder;
+                                           echo $countOrder ?>
                                        </span>
                                    </span>
                     <p class="my-0">Giỏ hàng</p>
@@ -81,7 +83,7 @@ include "count_order.php";
                             class="my-0 btn button-custom button-custom-color d-flex flex-column btn-sm justify-content-center align-items-center"
                             data-bs-toggle="dropdown">
                         <img src="../images/user.png" alt="">
-                      <span id="name-user">
+                        <span id="name-user">
                             <?php
                             session_start();
                             echo $_SESSION['user_info']['user_name'];
