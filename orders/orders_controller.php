@@ -22,3 +22,15 @@ if (isset($_POST['delete-item'])) {
     header('location: order.php');
 }
 
+function sumOrderProduct(){
+    $sum = 0;
+    $id_user = $_SESSION['user_info']['id'];
+    $orderUser = responseData("Select id_product,count_order from orders where id_user='$id_user' 
+                                and type_order='0'");
+    foreach ($orderUser as $order) {
+        $price = responseData("Select price from products where id_product=" . $order['id_product'])[0]['price'];
+        $sum += $order['count_order'] * $price;
+    }
+    return $sum;
+}
+

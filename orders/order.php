@@ -13,6 +13,11 @@ global $countProduct;
     <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="../js/jquery.min.js"></script>
 </head>
+<style>
+    input[type='radio'] {
+        accent-color: rgb(250,53,69);
+    }
+</style>
 <body>
 <div id="header">
     <?php include "../header/header.php" ?>
@@ -56,7 +61,8 @@ global $countProduct;
                                            value="<?php echo $product['id_product'] ?>">
                                     -
                                 </button>
-                                <span><?php echo $dataCart['count'] ?></span>
+                                <span><?php
+                                    echo $dataCart['count'] ?></span>
                                 <button class="btn btn-outline-danger" name="decrease">
                                     <input type="text" hidden="hidden" name="id-product"
                                            value="<?php echo $product['id_product'] ?>">
@@ -66,8 +72,30 @@ global $countProduct;
                         </div>
                     </div>
                 </div>
-            <?php }
-        } ?>
+            <?php } ?>
+            <div class="py-3 d-flex flex-column align-items-center">
+                    <h4 class="text-danger">Tổng giá trị sản phẩm:
+                        <?php
+                        $money = number_format(sumOrderProduct(), 0,
+                            '', '.');
+                        echo $money?>đ</h4>
+                    <br>
+                <h5 class="d-flex flex-row align-items-center">Phương thức thanh toán: <form action="" class="d-flex flex-sm-row">
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="radio" id="money" name="fav_language" value="1" checked="checked" >
+                            <label for="money" class="text-danger">Tiền mặt</label>
+                        </div>
+                        <div class="px-1"></div>
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="radio" id="banking" name="fav_language" value="2">
+                            <label for="banking" class="text-danger">Banking</label>
+                        </div>
+                    </form></h5>
+                <br>
+                    <button class="bg-danger p-2 rounded-2 text-white border-white" type="submit">Mua sản phẩm</button>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 </body>
