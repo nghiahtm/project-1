@@ -75,6 +75,12 @@ global $responseProduct;
                             <h5>Hàng đã hết xin hãy đợi</h5>
                         </div>
                     </div>
+                    <?php }elseif (empty($_SESSION['user_info']['id'])){ ?>
+                      <div class="d-flex bd-highlight">
+                          <a href="../login/login.php" class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
+                              Đăng nhập để mua hàng
+                          </a>
+                      </div>
                     <?php }else{?>
                     <div class="d-flex bd-highlight">
                         <button id ="buy-now" class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">

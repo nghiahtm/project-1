@@ -15,14 +15,17 @@ global $countProduct;
 </head>
 <body>
 <div id="header">
-<!--    --><?php //include "../header/header.php" ?>
+    <?php include "../header/header.php" ?>
 </div>
 <div class="container" id="main">
     <h4 class="text-danger">
         Giỏ hàng
     </h4>
     <div>
-        <?php if (empty($dataCarts)) { ?>
+        <?php if (empty($_SESSION['user_info'])) { ?>
+            <a href="../login/login.php"
+               class="bg-danger p-2 rounded-2">Đăng nhập để vào giỏ hàng</a>
+        <?php } elseif (empty($dataCarts)) { ?>
             <h5>Chưa có sản phẩm trong giỏ hàng</h5>
         <?php } else { ?>
             <form action="" method="post">
@@ -36,7 +39,8 @@ global $countProduct;
                     <div class="d-flex flex-column mx-2">
                         <h5> <?php echo $product['name_product'] ?>
                             <form action="" method="post">
-                                <input type="text" hidden="hidden" name="id-product" value="<?php echo $product['id_product']?>">
+                                <input type="text" hidden="hidden" name="id-product"
+                                       value="<?php echo $product['id_product'] ?>">
                                 <button class="bg-danger text-white border-white" type="submit" name="delete-item"><i
                                             class="bi bi-trash3"></i></button>
                             </form>
@@ -46,9 +50,19 @@ global $countProduct;
                                 '', '.');
                             echo $money ?>đ</h5>
                         <div>
-                            <button class="btn btn-outline-danger">-</button>
-                            <span><?php echo $dataCart['count'] ?></span>
-                            <button class="btn btn-outline-danger">+</button>
+                            <form action="" method="post">
+                                <button class="btn btn-outline-danger" name="increase" type="submit">
+                                    <input type="text" hidden="hidden" name="id-product"
+                                           value="<?php echo $product['id_product'] ?>">
+                                    -
+                                </button>
+                                <span><?php echo $dataCart['count'] ?></span>
+                                <button class="btn btn-outline-danger" name="decrease">
+                                    <input type="text" hidden="hidden" name="id-product"
+                                           value="<?php echo $product['id_product'] ?>">
+                                    +
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

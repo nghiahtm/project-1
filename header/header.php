@@ -1,5 +1,5 @@
 <?php
-include "count_order.php";
+include_once "count_order.php";
 ?>
 <html>
 <head>

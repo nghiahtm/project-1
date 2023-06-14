@@ -35,15 +35,16 @@ $(document).ready(
 
 function callDataOrder(count,id) {
     count++;
-    if (count <= 5) {
+    if (count <= 3) {
         $.ajax({
             url: '../header/count_order.php',
             type: 'POST',
             data: {orders: count, id_product: id},
             success: function (response) {
-                console.log(response);
                 $("#quantity").text(response);
             },
         })
+    }else {
+        alert("Bạn chỉ mua tối đa 3 hàng");
     }
 }
