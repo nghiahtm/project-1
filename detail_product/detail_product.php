@@ -8,7 +8,6 @@ global $responseProduct;
 <head>
     <meta charset="UTF-8">
     <title>Project1</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="detail.css">
     <script src="../js/jquery.min.js"></script>
 </head>

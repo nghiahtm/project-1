@@ -10,7 +10,6 @@ global $countProduct;
 <head>
     <meta charset="UTF-8">
     <title>Project1</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="../js/jquery.min.js"></script>
 </head>
 <style>
@@ -92,12 +91,13 @@ global $countProduct;
                         </div>
                     </form></h5>
                 <br>
-                    <button class="bg-danger p-2 rounded-2 text-white border-white" type="submit">Mua sản phẩm</button>
+                <form action="" method="post">
+                    <button class="bg-danger p-2 rounded-2 text-white border-0" name="buy" type="submit">Mua sản phẩm</button>
+                </form>
                 </div>
             </div>
         <?php } ?>
     </div>
-</div>
 </body>
 <script src="../header/get_count.js"></script>
 </html>

@@ -5,10 +5,8 @@ include "controller_home.php" ?>
 <head>
     <meta charset="UTF-8">
     <title>Project1</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="home.css">
     <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
 </head>
 <body>
     <div id="header">

@@ -8,7 +8,7 @@ $id = $_POST['id_product'];
 $date = date("Y-m-d H:i");
 
 if (!empty($phone)) {
-    $countOrder = responseData("Select count(*)as count from orders where id_user='$phone'")[0]['count'];
+    $countOrder = responseData("Select count(*)as count from orders where id_user='$phone' and type_order='0'")[0]['count'];
 } else {
     $countOrder = 0;
 }
@@ -19,7 +19,7 @@ if (!empty($_POST['orders'])) {
     if ($_SESSION['orders'] <= 5) {
         if (isUpdateOrCreateOrder($id, $id_user)) {
             $getCount = responseData("Select count_order from orders
-                   WHERE id_user='$id_user'and id_product='$id'")[0]['count_order'];
+                   WHERE id_user='$id_user'and id_product='$id' and type_order='0'")[0]['count_order'];
             $getCount++;
             responseData("UPDATE orders
             SET count_order = $getCount
