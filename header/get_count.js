@@ -4,7 +4,8 @@ $(document).ready(
         let id = $('#id-product').val();
         let count = parseInt(textValue, 10);
         $('#cart').on('click', function () {
-           callDataOrder(count,id);
+            count++;
+            callDataOrder(count, id);
         })
     }
 )
@@ -19,13 +20,20 @@ $(document).ready(
             $.ajax({
                 url: '../buy_page/buy_controller.php',
                 type: 'POST',
-                data: {id_product: id,user: name},
+                data: {id_product: id, user: name},
                 success: function (response) {
                     if (response === "login") {
                         alert("Đăng nhập để mua hàng")
-                    }else {
-                        callDataOrder(count,id);
-                        window.location.href = '../orders/order.php';
+                    } else {
+                        count = response;
+                        console.log(count);
+                        if (count < 3) {
+                            count++;
+                            callDataOrder(count, id);
+                            window.location.href = '../orders/order.php';
+                        } else {
+                            alert("Bạn chỉ mua tối đa 3 hàng");
+                        }
                     }
                 }
             })
@@ -33,8 +41,7 @@ $(document).ready(
     }
 )
 
-function callDataOrder(count,id) {
-    count++;
+function callDataOrder(count, id) {
     if (count <= 3) {
         $.ajax({
             url: '../header/count_order.php',
@@ -44,7 +51,7 @@ function callDataOrder(count,id) {
                 $("#quantity").text(response);
             },
         })
-    }else {
+    } else {
         alert("Bạn chỉ mua tối đa 3 hàng");
     }
 }

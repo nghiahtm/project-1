@@ -5,6 +5,7 @@ session_start();
 $id_user = $_SESSION['user_info']['id'];
 $orderUser = responseData("Select id_product,count_order from orders where id_user='$id_user' 
                                 and type_order='0'");
+
 foreach ($orderUser as $order) {
     $dataCarts[] = array(
         'product' => responseData("Select * from products where id_product=" . $order['id_product'])[0],
@@ -13,12 +14,12 @@ foreach ($orderUser as $order) {
 }
 
 if (isset($_POST['removeAll'])) {
-    responseData("Delete from orders where id_user='$id_user'");
+    responseData("Delete from orders where id_user='$id_user'and type_order='0'");
     header('location: order.php');
 }
 
 if (isset($_POST['delete-item'])) {
-    responseData("DELETE FROM orders WHERE id_user='$id_user' and id_product=" . $_POST['id-product']);
+    responseData("DELETE FROM orders WHERE id_user='$id_user'and type_order='0'and id_product=" . $_POST['id-product']);
     header('location: order.php');
 }
 
@@ -36,13 +37,15 @@ function sumOrderProduct()
 }
 
 if (isset($_POST['buy'])) {
+    $dateTimeBuy = $date = date("Y-m-d H:i:s");
     foreach ($orderUser as $order) {
         $id_product =  $order['id_product'];
-        $dateTimeBuy = $date = date("Y-m-d H:i");
         responseData("Update orders set 
                   type_order = '1',
                   order_date = '$dateTimeBuy'
-                  where id_user = '$id_user' and id_product='$id_product'");
+                  where id_user = '$id_user'and type_order ='0'
+                    and id_product='$id_product'");
+        unset($_SESSION['orders']);
         header("location: ../home/home.php");
     }
 }

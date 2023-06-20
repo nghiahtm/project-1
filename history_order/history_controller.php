@@ -3,7 +3,7 @@ include_once "../database/db_helper.php";
 session_start();
 
 $id_user = $_SESSION['user_info']['id'];
-$dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order='1'");
+$dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0'");
 
 function billsUser($dataHistory)
 {
@@ -41,16 +41,17 @@ function totalCount($date)
 function getProducts($date)
 {
     $ordersUser = getOrderUser($date, 'count_order,id_product');
-    $product = [];
+    $products = [];
+    $countOrder = [];
     foreach ($ordersUser as $order) {
-        $dataProduct = responseData("Select price,link_image,name_product from products where id_product=" . $order['id_product'])[0];
-        $product = array(
-            'count' => $order['count_order'],
-            'name' => $dataProduct['name_product'],
-            'price' => $dataProduct['price']
-        );
+        $products[] = responseData("Select price,link_image,name_product from products 
+                                     where id_product=" . $order['id_product'])[0];
+        $countOrder[] = $order['count_order'];
     }
-    return $product;
+    return array(
+        'products' => $products,
+        'counts' => $countOrder
+    );
 }
 
 function getTypeOrder($datetime)
@@ -68,13 +69,19 @@ function configTypeOrder($type)
     if ($type === '1') {
         return "Đang xử lý";
     }
+    if ($type === '3') {
+        return "Đã huỷ";
+    }
     return "Thành công";
 
 }
 
-function getOrderUser($date, $typeQuery)
+function getOrderUser($date, $typeQuery, $typeOrder = null)
 {
     $id_user = $_SESSION['user_info']['id'];
-    return responseData("Select $typeQuery from orders where id_user='$id_user' and order_date = '$date'
-                                and type_order='1'");
+    if (is_null($typeOrder)) {
+        return responseData("Select $typeQuery from orders where id_user='$id_user' and order_date = '$date' order by order_date");
+    }
+    return responseData("Select $typeQuery from orders where id_user='$id_user' and order_date = '$date' 
+                           and type_order='$typeOrder'order by order_date");
 }
