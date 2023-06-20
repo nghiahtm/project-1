@@ -10,7 +10,6 @@ global $countProduct;
 <head>
     <meta charset="UTF-8">
     <title>Project1</title>
-    <script src="../js/jquery.min.js"></script>
 </head>
 <style>
     input[type='radio'] {

@@ -1,14 +1,14 @@
 <?php
-include "history_controller.php";
+include_once "history_controller.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Project1</title>
+    <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div id="header">
     <?php
     include_once "../header/header.php";
@@ -18,26 +18,25 @@ include "history_controller.php";
     <h4 class="text-danger my-1">
         Lịch sử mua hàng
     </h4>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item <?php if (empty($_GET['order'])) echo 'bg-danger'; ?>">
+            <a href="history_order.php" class="<?php echo empty($_GET['order']) ? 'text-white' : 'text-black'; ?>">Tất
+                cả</a></li>
+        <li class="list-group-item <?php if ($_GET['order'] == '2') echo 'bg-danger'; ?>">
+            <a href="?order=2" class="<?php echo $_GET['order'] == '2' ? 'text-white' : 'text-black'; ?>">
+                Thành công</a></li>
+        <li class="list-group-item <?php if ($_GET['order'] == '1') echo 'bg-danger'; ?>">
+            <a href="?order=1"
+               class="<?php echo $_GET['order'] == '1' ? 'text-white' : 'text-black'; ?>">Đang
+                xử lý</a></li>
+        <li class="list-group-item <?php if ($_GET['order'] == '3') echo 'bg-danger'; ?>">
+            <a href="?order=3"
+               class="<?php echo $_GET['order'] == '3' ? 'text-white' : 'text-black'; ?>">Đã
+                huỷ</a></li>
+    </ul>
     <?php global $dataHistory;
     if (!empty($dataHistory)) { ?>
         <div>
-            <div class="row">
-                <div class="input-group rounded-2 col" id="datepicker">
-                    <label class="pb-3 input-group d-flex flex-wrap">
-                        <input
-
-                                id="birth"
-                                type="date"
-                                name="birthday"
-                                min='1900-01-01' max='2021-12-31'
-                                value="<?php ?>"
-                        />
-                    </label>
-                </div>
-                <div class="col border-1">
-                    <input type="text">
-                </div>
-            </div>
             <table class="table table-striped table-bordered table-sm my-2 text-center">
                 <thead>
                 <tr>
@@ -74,7 +73,7 @@ include "history_controller.php";
                             <?php
                             echo $dataProducts['products'][0]['name_product']; ?>
                         </td>
-                        <td>
+                        <td class='align-middle'>
                             <?php
                             $money = number_format($dataProducts['products'][0]['price'], 0,
                                 '', '.');
@@ -125,12 +124,9 @@ include "history_controller.php";
             </table>
         </div>
     <?php } else { ?>
-        <h5>Bạn hãy mua mua sản phẩm nào</h5>
+        <h5 class="my-1">Chưa có đơn hàng phù hợp</h5>
     <?php } ?>
 </div>
 </body>
-<script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/jquery.min.js"></script>
-<script src="../header/get_count.js"></script>
 </html>
 

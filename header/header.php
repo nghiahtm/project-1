@@ -11,6 +11,7 @@ include_once "count_order.php";
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../home/home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 <body>
 <div class="container sticky-top">
@@ -90,7 +91,7 @@ include_once "count_order.php";
                       </span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Thông tin người dùng</a></li>
+                    <li><a class="dropdown-item" href="../information_user/user.php">Thông tin người dùng</a></li>
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>

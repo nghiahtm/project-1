@@ -3,8 +3,12 @@ include_once "../database/db_helper.php";
 session_start();
 
 $id_user = $_SESSION['user_info']['id'];
-$dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0'");
-
+$order = $_GET['order'];
+if(empty($order)){
+    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0'");
+}else {
+    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order ='$order'");
+}
 function billsUser($dataHistory)
 {
     $bills = array();
