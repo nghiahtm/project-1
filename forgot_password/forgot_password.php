@@ -1,47 +1,55 @@
 <?php
-include "../header/count_order.php";
-include "controller_register.php";
+include_once "password_controller.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../register/register.css">
+    <script src="../js/jquery.min.js"></script>
     <title>Project1</title>
 </head>
 <body>
 <div id="header">
-    <?php include "../header/header.php" ?>
+    <?php
+    include_once "../header/header.php";
+    ?>
 </div>
-<div id="main">
-    <form action="" method="post">
-        <div class="container d-flex align-items-center flex-column">
-            <div class="d-flex flex-column my-5 text-center">
-                <p class="title">Đăng ký tài khoản</p>
-                <span class="text-danger bg-danger-subtle rounded-3">
-                    <?php echo showError($_GET['error'])?>
-                </span>
-            </div>
-            <div class="mb-3 w-50">
+<div id = "main">
+    <div class="container d-flex align-items-center flex-column">
+        <div class="d-flex my-2">
+            <p class="title">Lấy lại mật khẩu</p>
+        </div>
+        <?php
+        $error = $_GET['error'];
+        if(!empty($error)){
+            ?>
+            <div class="bg-danger text-white my-2 rounded-1 p-1 text-center"><?php switch ($error){
+                    case '1':
+                        echo 'Số điện thoại không tồn tại';
+                        break;
+                    case '2':
+                        echo 'Nhập đầy đủ thông tin mật khẩu';
+                        break;
+                    case '3':
+                        echo 'Mật khẩu nhập lại không đúng';
+                        break;
+                }?></div>
+        <?php }?>
+        <form action="" method="post" class="w-50">
+            <div class="mb-3">
                 <div class="w-100 border-input" id="border-phone">
-                    <input class="input-group" id="phone" type="text" name="phone-number"
+                    <input class="input-group w-100" id="phone" type="text"
                            maxlength="10"
-                           value="<?php echo $_SESSION['phone-register']?>"
                            placeholder="Nhập số điện thoại"
-                    >
+                           name="phone"
+                           value="<?php echo $_SESSION['phone-success']?>">
                 </div>
-                <small class="text-error" id="phone-error"></small>
             </div>
-            <div class="mb-3 w-50 border-input">
-                <input class="input-group w-100" id="name" name="full-name" type="text"
-                       placeholder="Tên người dùng">
-            </div>
-            <div class="mb-3 w-50" id="input-pass">
+            <div class="mb-3" id="input-pass">
                 <div class="w-100 border-input" id="border-password">
                     <input class="input-group" id="password" name="password" type="password"
-                           placeholder="Nhập mật khẩu">
+                           placeholder="Nhập mật khẩu mới">
                     <span class="eyes" id="ic-password">
                     <svg id="eye" width="24" height="24" version="1.1" viewBox="0 0 20 20"
                          x="0px" y="0px"
@@ -59,10 +67,10 @@ include "controller_register.php";
                 </div>
                 <small class="text-error" id="password-error"></small>
             </div>
-            <div class="mb-3 w-50">
+            <div class="mb-3">
                 <div class="w-100 border-input" id="border-re-password">
                     <input class="input-group" id="re-password" name="re-password" type="password"
-                           placeholder="Nhập lại mật khẩu">
+                           placeholder="Nhập lại mật khẩu mới">
                     <span class="eyes" id="ic-re-password">
                     <svg id="eye" width="24" height="24" version="1.1" viewBox="0 0 20 20" x="0px" y="0px"
                          class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M11.998 10a2 2 0 11-4 0 2 2 0 014 0z"></path><path
@@ -80,21 +88,20 @@ include "controller_register.php";
                 </div>
                 <small class="text-error" id="re-password-error"></small>
             </div>
-            <div class="mb-3 w-75 d-flex justify-content-center">
-                <button class="w-50 btn btn-lg bg-danger text-white rounded-5" id="register" name="register"
-                        type="submit"
-                        >Đăng ký
-                </button>
+            <div class="mb-3 d-flex justify-content-center">
+                <button class = "w-50 btn btn-lg bg-danger text-white rounded-5" type="submit" name="update">Thay đổi mật khẩu</button>
             </div>
-            <div class="create-acc">
-            <span>
-                Bạn đã có tài khoản?
-                <a href="../login/login.php" class="link">Đăng nhập</a>
+        </form>
+        <span>
+                Bạn chưa có tài khoản?
+                <a href="../register/register.php" class="link">Đăng ký ngay</a>
             </span>
-            </div>
-        </div>
-    </form>
+        <span>
+            Bạn đã có tài khoản?
+                <a href="../login/login.php" class="link">Đăng nhập ngay</a>
+            </span>
+    </div>
 </div>
 </body>
-<script src="register.js"></script>
+<script src="../register/register.js"></script>
 </html>

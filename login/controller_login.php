@@ -2,17 +2,15 @@
 include "../database/db_helper.php";
 session_start();
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    if (!isSuccess()) {
-        header("location: login.php");
-    } else {
+if (isset($_POST['phone']) && isset($_POST['password'])) {
+    if (isSuccess())  {
         if (isset($_POST['login'])) {
-            $postUserName = $_POST['username'];
+            $postUserName = $_POST['phone'];
             $postPassword = $_POST['password'];
             $data = responseData("SELECT * FROM `users` where phone_number = '$postUserName' and `passwords` = '$postPassword'");
             if (empty($data)) {
-                $_SESSION['error'] = 'Sai tài khoản hoặc mật khẩu';
-                header("location: login.php");
+                $_SESSION['phone'] = $_POST['phone'];
+                header("location: login.php?error=3");
             } else {
                 $_SESSION['user_info'] = $data[0];
                 unset($_SESSION['error']);
@@ -26,15 +24,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 function isSuccess()
 {
-    if (empty($_POST['username']) && empty($_POST['password'])) {
-        $_SESSION['error'] = 'Nhập tài khoản và mật khẩu';
+    if (empty($_POST['phone']) && empty($_POST['password'])) {
+        header("location: login.php?error=1");
         return false;
     } elseif (empty($_POST['password'])) {
-        $_SESSION['phone'] = $_POST['username'];
-        $_SESSION['error'] = 'Nhập mật khẩu';
+        $_SESSION['phone'] = $_POST['phone'];
+        header("location: login.php?error=4");
         return false;
-    } elseif (empty($_POST['username'])) {
-        $_SESSION['error'] = 'Nhập tài khoản';
+    } elseif (empty($_POST['phone'])) {
+        header("location: login.php?error=2");
         return false;
     }
     return true;

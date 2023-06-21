@@ -93,7 +93,3 @@ function changeStateSuccess(tokenId) {
     tokenId.classList.remove('error');
     tokenId.classList.add('border-input');
 }
-
-function changeStateShow(typeText){
-    return typeText.type === "password";
-}

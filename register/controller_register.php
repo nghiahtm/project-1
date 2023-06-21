@@ -1,5 +1,5 @@
 <?php
-include "../database/db_helper.php";
+include_once "../database/db_helper.php";
 
 $name = $_POST['full-name'];
 $phone = $_POST['phone-number'];
@@ -24,7 +24,7 @@ function isValidate()
         header('location: register.php?error=1');
         return false;
     }else {
-        $_SESSION['phone'] = $_POST['phone-number'];
+        $_SESSION['phone-register'] = $_POST['phone-number'];
     }
     if (empty($_POST['password'])) {
         header('location: register.php?error=2');
