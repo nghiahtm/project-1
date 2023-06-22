@@ -29,6 +29,10 @@ include_once "history_controller.php";
             <a href="?order=1"
                class="<?php echo $_GET['order'] == '1' ? 'text-white' : 'text-black'; ?>">Đang
                 xử lý</a></li>
+        <li class="list-group-item <?php if ($_GET['order'] == '4') echo 'bg-danger'; ?>">
+            <a href="?order=4"
+               class="<?php echo $_GET['order'] == '4' ? 'text-white' : 'text-black'; ?>">Đang
+                chờ huỷ</a></li>
         <li class="list-group-item <?php if ($_GET['order'] == '3') echo 'bg-danger'; ?>">
             <a href="?order=3"
                class="<?php echo $_GET['order'] == '3' ? 'text-white' : 'text-black'; ?>">Đã
@@ -46,6 +50,7 @@ include_once "history_controller.php";
                     <th class="align-middle" scope="col" colspan="3">Mặt hàng</th>
                     <th class="align-middle" scope="col" rowspan="2">Tổng tiền</th>
                     <th class="align-middle" scope="col" rowspan="2">Trạng thái mua hàng</th>
+                    <th class="align-middle" scope="col" rowspan="2">Huỷ đơn hàng</th>
                 </tr>
                 <tr>
                     <th class="align-middle">Tên sản phẩm</th>
@@ -95,10 +100,23 @@ include_once "history_controller.php";
                             echo "text-warning";
                         } elseif (getTypeOrder($ordersDate) === "Đã huỷ") {
                             echo "text-danger";
+                        } elseif (getTypeOrder($ordersDate) === "Đang chờ huỷ") {
+                            echo "text-dark";
                         } else {
                             echo "text-success";
                         } ?>">
                             <?php echo getTypeOrder($ordersDate) ?>
+                        </td>
+                        <td rowspan="<?php echo $rowspanProducts ?>" class="align-middle">
+                            <?php if (getTypeOrder($ordersDate) !== "Thành công" &&
+                                getTypeOrder($ordersDate) !== "Đang chờ huỷ") { ?>
+                                <form method="post">
+                                    <input type="text" name="create" value="<?php
+                                    echo $ordersDate ?>" hidden="">
+                                    <button name='remove' class="btn btn-danger text-white"><i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php

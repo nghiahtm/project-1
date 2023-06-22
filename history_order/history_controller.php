@@ -4,10 +4,15 @@ session_start();
 
 $id_user = $_SESSION['user_info']['id'];
 $order = $_GET['order'];
-if(empty($order)){
+if (empty($order)) {
     $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0'");
-}else {
+} else {
     $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order ='$order'");
+}
+
+if (isset($_POST['remove'])) {
+    $date = $_POST['create'];
+    responseData("update orders set type_order = '4' where id_user='$id_user'and order_date= '$date'");
 }
 function billsUser($dataHistory)
 {
@@ -75,6 +80,9 @@ function configTypeOrder($type)
     }
     if ($type === '3') {
         return "Đã huỷ";
+    }
+    if ($type === '4') {
+        return "Đang chờ huỷ";
     }
     return "Thành công";
 

@@ -83,11 +83,11 @@ global $countProduct;
                             <input type="radio" id="money" name="fav_language" value="1" checked="checked" >
                             <label for="money" class="text-danger">Tiền mặt</label>
                         </div>
-                        <div class="px-1"></div>
-                        <div class="d-flex flex-row align-items-center">
-                            <input type="radio" id="banking" name="fav_language" value="2">
-                            <label for="banking" class="text-danger">Banking</label>
-                        </div>
+<!--                        <div class="px-1"></div>-->
+<!--                        <div class="d-flex flex-row align-items-center">-->
+<!--                            <input type="radio" id="banking" name="fav_language" value="2">-->
+<!--                            <label for="banking" class="text-danger">Banking</label>-->
+<!--                        </div>-->
                     </form></h5>
                 <br>
                 <form action="" method="post">
