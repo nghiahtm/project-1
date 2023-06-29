@@ -4,6 +4,9 @@ session_start();
 
 $id = $_GET['id'];
 $responseProduct = responseData("Select * from products where id_product='$id'")[0];
+$responseConfig = responseData("Select * from configurations 
+    left join products p on configurations.id_configurations = p.id_config 
+         where id_product='$id'")[0];
 $configInitData = $responseProduct['id_main_product'];
 $responseSameCodeProducts = responseData("
 Select c.chip, c.ram,c.vga,c.`size-memory`,p.id_product,p.price,p.quantity as count from configurations c

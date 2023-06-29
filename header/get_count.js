@@ -18,7 +18,7 @@ $(document).ready(
         let count = parseInt(textValue, 10);
         $('#buy-now').on('click', function () {
             $.ajax({
-                url: '../buy_page/buy_controller.php',
+                url: '../detail_product/buy_controller.php',
                 type: 'POST',
                 data: {id_product: id, user: name},
                 success: function (response) {
@@ -27,7 +27,7 @@ $(document).ready(
                     } else {
                         count = response;
                         console.log(count);
-                        if (count < 3) {
+                        if (response < 3) {
                             count++;
                             callDataOrder(count, id);
                             window.location.href = '../orders/order.php';

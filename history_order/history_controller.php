@@ -5,9 +5,9 @@ session_start();
 $id_user = $_SESSION['user_info']['id'];
 $order = $_GET['order'];
 if (empty($order)) {
-    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0'");
+    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0' order by order_date desc ");
 } else {
-    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order ='$order'");
+    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order ='$order' order by order_date desc");
 }
 
 if (isset($_POST['remove'])) {
@@ -53,7 +53,7 @@ function getProducts($date)
     $products = [];
     $countOrder = [];
     foreach ($ordersUser as $order) {
-        $products[] = responseData("Select price,link_image,name_product from products 
+        $products[] = responseData("Select price,link_image,name_product,id_product from products 
                                      where id_product=" . $order['id_product'])[0];
         $countOrder[] = $order['count_order'];
     }
@@ -85,7 +85,6 @@ function configTypeOrder($type)
         return "Đang chờ huỷ";
     }
     return "Thành công";
-
 }
 
 function getOrderUser($date, $typeQuery, $typeOrder = null)

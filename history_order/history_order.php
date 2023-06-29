@@ -75,8 +75,11 @@ include_once "history_controller.php";
                         <td class='align-middle'
                             rowspan="<?php echo $rowspanProducts ?>"><?php echo totalCount($ordersDate) ?></td>
                         <td>
-                            <?php
-                            echo $dataProducts['products'][0]['name_product']; ?>
+                            <a href="../detail_product/detail_product.php?id=<?php echo $dataProducts['products'][0]['id_product'] ?>"
+                               class="text-black">
+                                <?php
+                                echo $dataProducts['products'][0]['name_product']; ?>
+                            </a>
                         </td>
                         <td class='align-middle'>
                             <?php
@@ -109,7 +112,8 @@ include_once "history_controller.php";
                         </td>
                         <td rowspan="<?php echo $rowspanProducts ?>" class="align-middle">
                             <?php if (getTypeOrder($ordersDate) !== "Thành công" &&
-                                getTypeOrder($ordersDate) !== "Đang chờ huỷ") { ?>
+                                getTypeOrder($ordersDate) !== "Đang chờ huỷ" &&
+                                getTypeOrder($ordersDate) !== "Đã huỷ") { ?>
                                 <form method="post">
                                     <input type="text" name="create" value="<?php
                                     echo $ordersDate ?>" hidden="">
@@ -126,7 +130,15 @@ include_once "history_controller.php";
                             <tr>
                                 <?php
                                 $name2 = $dataProducts['products'][$i]['name_product'];
-                                echo "<td>$name2</td>";
+                                ?>
+                                <td>
+                                    <a href="../detail_product/detail_product.php?id=<?php echo $dataProducts['products'][0]['id_product'] ?>"
+                                       class="text-black">
+                                        <?php
+                                        echo $dataProducts['products'][$i]['name_product']; ?>
+                                    </a>
+                                </td>
+                                <?php
                                 $money = number_format($dataProducts['products'][$i]['price'], 0,
                                     '', '.');
                                 echo "<td class='align-middle'>$money đ</td>";

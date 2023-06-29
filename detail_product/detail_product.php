@@ -1,6 +1,7 @@
 <?php
 include_once 'detail_controller.php';
 global $responseProduct;
+global $responseConfig;
 ?>
 
 <!DOCTYPE html>
@@ -68,30 +69,79 @@ global $responseProduct;
                             </form>
                         <?php } ?>
                     </div>
-                    <?php if($responseProduct['quantity'] == 0){?>
-                    <div class="d-flex bd-highlight">
-                        <div class="bg-white text-danger btn-outline-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">
-                            <h5>Hàng đã hết xin hãy đợi</h5>
+                    <?php if ($responseProduct['quantity'] == 0){ ?>
+                        <div class="d-flex bd-highlight">
+                            <div class="text-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">
+                                <h5>Hàng đã hết xin hãy đợi</h5>
+                            </div>
                         </div>
-                    </div>
-                    <?php }elseif (empty($_SESSION['user_info']['id'])){ ?>
-                      <div class="d-flex bd-highlight">
-                          <a href="../login/login.php" class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
-                              Đăng nhập để mua hàng
-                          </a>
-                      </div>
-                    <?php }else{?>
+                    <?php } elseif (empty($_SESSION['user_info']['id'])) { ?>
+                        <div class="d-flex bd-highlight">
+                            <a href="../login/login.php"
+                               class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
+                                Đăng nhập để mua hàng
+                            </a>
+                        </div>
+                    <?php }
+                    else{ ?>
                     <div class="d-flex bd-highlight">
-                        <button id ="buy-now" class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
+                        <button id="buy-now"
+                                class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
                             Mua Ngay
                         </button>
-                            <button class="bg-buy-later" id="cart" name="count">
-                                <input type="text" hidden="hidden" id="id-product"
-                                       value="<?php echo $responseProduct['id_product'] ?>">
-                                <img src="https://cdn2.cellphones.com.vn/50x,webp,q70/media/wysiwyg/add-to-cart.png"
-                                     width="50" alt="cart-icon">
-                            </button>
-                        <?php }?>
+                        <button class="bg-buy-later" id="cart" name="count">
+                            <input type="text" hidden="hidden" id="id-product"
+                                   value="<?php echo $responseProduct['id_product'] ?>">
+                            <img src="https://cdn2.cellphones.com.vn/50x,webp,q70/media/wysiwyg/add-to-cart.png"
+                                 width="50" alt="cart-icon">
+                        </button>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-8">
+                <div class="shadow p-2 bg-white rounded">
+                    <div class="d-flex justify-content-center">
+                        <h5>
+                            Tính năng nổi bật
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="shadow p-2 bg-white rounded">
+                    <div class="column">
+                        <div>
+                            <h5>
+                                Thông số kỹ thuật
+                            </h5>
+                        </div>
+                        <div>
+                            <table class="table table-striped table-borderless">
+                                <tr>
+                                    <td>Loại card đồ họa</td>
+                                    <td><?php echo $responseConfig['vga'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Dung lượng RAM</td>
+                                    <td><?php echo $responseConfig['ram'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ổ cứng</td>
+                                    <td><?php echo $responseConfig['size-memory'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Hệ điều hành</td>
+                                    <td><?php echo $responseConfig['platform'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Độ phân giải màn hình</td>
+                                    <td><?php echo $responseConfig['resolution'] ?></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

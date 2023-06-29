@@ -54,14 +54,14 @@ global $countProduct;
                             echo $money ?>đ</h5>
                         <div>
                             <form action="" method="post">
-                                <button class="btn btn-outline-danger" name="increase" type="submit">
+                                <button class="btn btn-outline-danger" name="decrease" type="submit">
                                     <input type="text" hidden="hidden" name="id-product"
                                            value="<?php echo $product['id_product'] ?>">
                                     -
                                 </button>
                                 <span><?php
                                     echo $dataCart['count'] ?></span>
-                                <button class="btn btn-outline-danger" name="decrease">
+                                <button class="btn btn-outline-danger" name="increase">
                                     <input type="text" hidden="hidden" name="id-product"
                                            value="<?php echo $product['id_product'] ?>">
                                     +
