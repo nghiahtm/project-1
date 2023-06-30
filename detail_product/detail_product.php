@@ -69,32 +69,45 @@ global $responseConfig;
                             </form>
                         <?php } ?>
                     </div>
-                    <?php if ($responseProduct['quantity'] == 0){ ?>
-                        <div class="d-flex bd-highlight">
+                    <!--                    --><?php //if ($responseProduct['quantity'] == 0){ ?>
+                    <!--                        <br>-->
+                    <!--                        <div class="d-flex bd-highlight">-->
+                    <!--                            <div class="text-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">-->
+                    <!--                                <h5>Hàng đã hết xin hãy đợi</h5>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!---->
+                    <!--                    --><?php //} elseif (empty($_SESSION['user_info']['id'])) { ?>
+                    <!--                        <div class="d-flex bd-highlight">-->
+                    <!--                            <a href="../login/login.php"-->
+                    <!--                               class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">-->
+                    <!--                                Đăng nhập để mua hàng-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                    --><?php //}
+                    //                    else{ ?>
+                    <div class="d-flex bd-highlight">
+                        <?php if ($responseProduct['quantity'] == 0) { ?>
                             <div class="text-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">
                                 <h5>Hàng đã hết xin hãy đợi</h5>
                             </div>
-                        </div>
-                    <?php } elseif (empty($_SESSION['user_info']['id'])) { ?>
-                        <div class="d-flex bd-highlight">
+                        <?php } elseif (empty($_SESSION['user_info']['id'])) { ?>
                             <a href="../login/login.php"
                                class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
                                 Đăng nhập để mua hàng
                             </a>
-                        </div>
-                    <?php }
-                    else{ ?>
-                    <div class="d-flex bd-highlight">
-                        <button id="buy-now"
-                                class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
-                            Mua Ngay
-                        </button>
-                        <button class="bg-buy-later" id="cart" name="count">
-                            <input type="text" hidden="hidden" id="id-product"
-                                   value="<?php echo $responseProduct['id_product'] ?>">
-                            <img src="https://cdn2.cellphones.com.vn/50x,webp,q70/media/wysiwyg/add-to-cart.png"
-                                 width="50" alt="cart-icon">
-                        </button>
+                        <?php } else {
+                            ?>
+                            <button id="buy-now"
+                                    class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">
+                                Mua Ngay
+                            </button>
+                            <button class="bg-buy-later" id="cart" name="count">
+                                <input type="text" hidden="hidden" id="id-product"
+                                       value="<?php echo $responseProduct['id_product'] ?>">
+                                <img src="https://cdn2.cellphones.com.vn/50x,webp,q70/media/wysiwyg/add-to-cart.png"
+                                     width="50" alt="cart-icon">
+                            </button>
                         <?php } ?>
                     </div>
                 </div>

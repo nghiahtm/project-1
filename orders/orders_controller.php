@@ -26,26 +26,28 @@ if (isset($_POST['delete-item'])) {
 if (isset($_POST['decrease'])) {
     $count = responseData("Select count_order from orders where id_user='$id_user' 
                                 and type_order='0' and id_product=$id")[0]['count_order'];
-    $total = $count-1;
+    $total = --$count;
     if ($total === 0) {
         responseData("DELETE FROM orders WHERE id_user='$id_user'and type_order='0'and id_product=$id");
-        $_SESSION['orders'] -=1;
+        $_SESSION['orders'] -= 1;
     } else {
         responseData("Update orders set 
                   count_order = '$total'
                   where id_user = '$id_user' and type_order ='0'
                     and id_product='$id'");
     }
+    header('location: order.php');
 }
 
 if (isset($_POST['increase'])) {
     $count = responseData("Select count_order from orders where id_user='$id_user' 
                                 and type_order='0' and id_product=$id")[0]['count_order'];
-    $total = $count + 1;
+    $total = ++$count;
     responseData("Update orders set 
                   count_order = '$total'
                   where id_user = '$id_user' and type_order ='0'
                     and id_product='$id'");
+    header('location: order.php');
 }
 function sumOrderProduct()
 {
