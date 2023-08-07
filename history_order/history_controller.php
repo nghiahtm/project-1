@@ -5,14 +5,25 @@ session_start();
 $id_user = $_SESSION['user_info']['id'];
 $order = $_GET['order'];
 if (empty($order)) {
-    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order !='0' order by order_date desc ");
+    $dataHistory = responseData("Select * from orders where id_user='$id_user'and type_order !='0' order by order_date desc ");
 } else {
-    $dataHistory = responseData("Select order_date from orders where id_user='$id_user'and type_order ='$order' order by order_date desc");
+    $dataHistory = responseData("Select * from orders where id_user='$id_user'and type_order ='$order' order by order_date desc");
 }
 
 if (isset($_POST['remove'])) {
-    $date = $_POST['create'];
-    responseData("update orders set type_order = '4' where id_user='$id_user'and order_date= '$date'");
+    $code = $_POST['create'];
+    $typeData = responseData("Select type_order from orders where id_user='$id_user'and code_orders ='$code'");
+    $type = $typeData[0]['type_order'];
+    if ($type === '1') {
+        responseData("update orders set type_order = '8' where id_user='$id_user'and code_orders= '$code'");
+    } else {
+        header('location: cancel.php?error=1');
+    }
+}
+
+if (isset($_POST['success_products'])) {
+    $code = $_POST['create'];
+    responseData("update orders set type_order = '6' where id_user='$id_user'and code_orders= '$code'");
 }
 function billsUser($dataHistory)
 {
@@ -21,7 +32,7 @@ function billsUser($dataHistory)
         return array();
     }
     foreach ($dataHistory as $item) {
-        $bills[$item['order_date']][] = $item;
+        $bills[$item['code_orders']][] = $item;
     }
     return $bills;
 }
@@ -63,36 +74,48 @@ function getProducts($date)
     );
 }
 
-function getTypeOrder($datetime)
+function getTypeOrder($code)
 {
     $id_user = $_SESSION['user_info']['id'];
     $typeOrder =
         responseData("SELECT type_order FROM orders
-                  where order_date = '$datetime' and id_user = '$id_user'
+                  where code_orders = '$code' and id_user = '$id_user'
                   group by type_order")[0]['type_order'];
     return configTypeOrder($typeOrder);
 }
 
 function configTypeOrder($type)
 {
-    if ($type === '1') {
-        return "Đang xử lý";
+    switch ($type) {
+        case "1":
+            return "Đang xử lý";
+        case '2':
+            return "Xác nhận thanh toán thành công";
+        case '3':
+            return "Đang lấy hàng";
+        case '4':
+            return "Đang vận chuyển";
+        case '5':
+            return "Vận chuyển thành công";
+        case '6':
+            return "Đã lấy hàng";
+        case '7':
+            return "Nhận hàng";
+        case '8':
+            return "Đang chờ huỷ";
+        case '9':
+            return "Đã huỷ";
+        default:
+            return "";
     }
-    if ($type === '3') {
-        return "Đã huỷ";
-    }
-    if ($type === '4') {
-        return "Đang chờ huỷ";
-    }
-    return "Thành công";
 }
 
-function getOrderUser($date, $typeQuery, $typeOrder = null)
+function getOrderUser($code, $typeQuery, $typeOrder = null)
 {
     $id_user = $_SESSION['user_info']['id'];
     if (is_null($typeOrder)) {
-        return responseData("Select $typeQuery from orders where id_user='$id_user' and order_date = '$date' order by order_date");
+        return responseData("Select $typeQuery from orders where id_user='$id_user' and code_orders = '$code' order by order_date");
     }
-    return responseData("Select $typeQuery from orders where id_user='$id_user' and order_date = '$date' 
-                           and type_order='$typeOrder'order by order_date");
+    return responseData("Select $typeQuery from orders where id_user='$id_user' and code_orders = '$code' 
+                           and type_order='$typeOrder'order by order_date desc");
 }

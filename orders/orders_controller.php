@@ -43,10 +43,12 @@ if (isset($_POST['increase'])) {
     $count = responseData("Select count_order from orders where id_user='$id_user' 
                                 and type_order='0' and id_product=$id")[0]['count_order'];
     $total = ++$count;
-    responseData("Update orders set 
+    if($total <= 3){
+        responseData("Update orders set 
                   count_order = '$total'
                   where id_user = '$id_user' and type_order ='0'
                     and id_product='$id'");
+    }
     header('location: order.php');
 }
 function sumOrderProduct()
@@ -63,16 +65,6 @@ function sumOrderProduct()
 }
 
 if (isset($_POST['buy'])) {
-    $dateTimeBuy = $date = date("Y-m-d H:i:s");
-    foreach ($orderUser as $order) {
-        $id_product = $order['id_product'];
-        responseData("Update orders set 
-                  type_order = '1',
-                  order_date = '$dateTimeBuy'
-                  where id_user = '$id_user'and type_order ='0'
-                    and id_product='$id_product'");
-        unset($_SESSION['orders']);
-        header("location: ../history_order/history_order.php");
-    }
+    header("location: ../payment/payment.php");
 }
 

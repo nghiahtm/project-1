@@ -19,7 +19,7 @@ function totalBillSuccess($user)
     $countOrders = responseData("Select id_product,count_order as count from orders 
                          where type_order ='2'and id_user=$user");
     foreach ($countOrders as $orderSuccess) {
-        $price = responseData("Select price from products where id_product=".
+        $price = responseData("Select price from products where id_product=" .
             $orderSuccess['id_product'])[0]['price'];
         $total += $orderSuccess['count'] * $price;
     }
@@ -28,9 +28,15 @@ function totalBillSuccess($user)
 
 if (isset($_POST['update_user'])) {
     $name = $_POST['name'];
+    $address = $_POST['address'];
     $id = $_SESSION['user_info']['id'];
     if (!empty($name)) {
-        responseData("Update users set user_name='$name' where id = '$id'");
+        responseData("Update users set 
+                 address='$address',
+                user_name='$name'
+             where id = '$id'");
         $_SESSION['user_info']['user_name'] = $name;
+        $_SESSION['user_info']['address'] = $address;
     }
+    header('location: user.php');
 }

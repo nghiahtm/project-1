@@ -42,11 +42,18 @@ $id = $_SESSION['user_info']['id'];
             <label for="name"></label>
             <input type="text" class="form-control border border-black" id="name"
                    name="name"
-                   placeholder="Họ và tên: <?php echo $_SESSION['user_info']['user_name'] ?>">
+                   value="<?php echo $_SESSION['user_info']['user_name'] ?>"
+                   placeholder="Họ và tên" />
+        </div>
+        <div class="form-group mb-1">
+            <input type="text" class="form-control border border-black" id="name"
+                   name="address"
+                   value="<?php echo $_SESSION['user_info']['address'] ?>"
+                   placeholder="Địa chỉ">
         </div>
         <div class="form-group mb-1">
             <input type="text" disabled="disabled" class="form-control"
-                   aria-describedby="emailHelp" placeholder="Số điênh thoại: <?php
+                   aria-describedby="emailHelp" placeholder="Số điện thoại: <?php
             echo $_SESSION['user_info']['phone_number'] ?>">
         </div>
         <div class="form-group mb-3">

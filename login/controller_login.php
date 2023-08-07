@@ -7,7 +7,8 @@ if (isset($_POST['phone']) && isset($_POST['password'])) {
         if (isset($_POST['login'])) {
             $postUserName = $_POST['phone'];
             $postPassword = $_POST['password'];
-            $data = responseData("SELECT * FROM users where phone_number = '$postUserName' and `passwords` = '$postPassword'");
+            $data = responseData("SELECT * FROM users 
+         where phone_number = '$postUserName' and `passwords` = '$postPassword'");
             if (empty($data)) {
                 $_SESSION['phone'] = $_POST['phone'];
                 header("location: login.php?error=3");

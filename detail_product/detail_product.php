@@ -10,7 +10,6 @@ global $responseConfig;
     <meta charset="UTF-8">
     <title>Project1</title>
     <link rel="stylesheet" href="detail.css">
-    <script src="../js/jquery.min.js"></script>
 </head>
 <body>
 <div id="header">
@@ -69,23 +68,6 @@ global $responseConfig;
                             </form>
                         <?php } ?>
                     </div>
-                    <!--                    --><?php //if ($responseProduct['quantity'] == 0){ ?>
-                    <!--                        <br>-->
-                    <!--                        <div class="d-flex bd-highlight">-->
-                    <!--                            <div class="text-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">-->
-                    <!--                                <h5>Hàng đã hết xin hãy đợi</h5>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!---->
-                    <!--                    --><?php //} elseif (empty($_SESSION['user_info']['id'])) { ?>
-                    <!--                        <div class="d-flex bd-highlight">-->
-                    <!--                            <a href="../login/login.php"-->
-                    <!--                               class="flex-grow-1 d-flex align-items-center py-3 justify-content-center bg-buy-now">-->
-                    <!--                                Đăng nhập để mua hàng-->
-                    <!--                            </a>-->
-                    <!--                        </div>-->
-                    <!--                    --><?php //}
-                    //                    else{ ?>
                     <div class="d-flex bd-highlight">
                         <?php if ($responseProduct['quantity'] == 0) { ?>
                             <div class="text-danger flex-grow-1 d-flex align-items-center py-3 justify-content-center">
@@ -120,6 +102,9 @@ global $responseConfig;
                         <h5>
                             Tính năng nổi bật
                         </h5>
+                    </div>
+                    <div class="flex-wrap" id="feature">
+                        <?php echo $responseConfig['feature'] ?>
                     </div>
                 </div>
             </div>
@@ -163,4 +148,6 @@ global $responseConfig;
 </div>
 </body>
 <script src="../header/get_count.js"></script>
+<script src="../js/jquery.min.js"></script>
+
 </html>

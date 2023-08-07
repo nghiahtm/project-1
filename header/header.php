@@ -67,7 +67,7 @@ include_once "count_order.php";
                 <p class="my-0">Giỏ hàng</p>
             </a>
             <?php
-            $name = $_SESSION['user_info']['user_name'];
+            $name = $_SESSION['user_info'];
             if (empty($name)) {
                 ?>
                 <a href="../login/login.php"
