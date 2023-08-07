@@ -139,11 +139,11 @@ include_once "history_controller.php";
                         </td>
                         <td rowspan="<?php echo $rowspanProducts ?>" class="align-middle">
                             <?php if (getTypeOrder($orders) === "Đang xử lý") { ?>
-                                <form method="post">
+                                <form method="post" action="../description_cancel/cancel.php">
                                     <input type="text" name="create" value="<?php echo $orders ?>" hidden="">
-                                    <a href="../description_cancel/cancel.php" class="btn btn-danger text-white"><i
+                                    <button name="remove" class="btn btn-danger text-white"><i
                                                 class="bi bi-x-circle"></i>
-                                    </a>
+                                    </button>
                                 </form>
                             <?php } ?>
                         </td>

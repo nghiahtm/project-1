@@ -15,7 +15,8 @@ if (isset($_POST['remove'])) {
     $typeData = responseData("Select type_order from orders where id_user='$id_user'and code_orders ='$code'");
     $type = $typeData[0]['type_order'];
     if ($type === '1') {
-        responseData("update orders set type_order = '8' where id_user='$id_user'and code_orders= '$code'");
+        header("location: ../description_cancel/cancel.php?id=$code");
+        //responseData("update orders set type_order = '8' where id_user='$id_user'and code_orders= '$code'");
     } else {
         header('location: cancel.php?error=1');
     }
