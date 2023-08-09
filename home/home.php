@@ -102,12 +102,12 @@ include "controller_home.php" ?>
                          ?>" alt="">
                     <p class="name-product"><?php echo $product['name_product'] ?></p>
                     <div class="d-flex flex-row mt-auto">
-                        <p class="price <?php if($product['quantity'] == 0) echo 'sold-out'?>"> <?php
+                        <p class="price <?php if($product['quantity'] <= 0) echo 'sold-out'?>"> <?php
                             $money = number_format($product['price'], 0,
                                 '', '.');
                             echo $money
                             ?> đ</p>
-                        <?php if($product['quantity'] == 0) {?>
+                        <?php if($product['quantity'] <= 0) {?>
                             <p class="price mx-1">Hết hàng</p>
                         <?php } ?>
                     </div>
