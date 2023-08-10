@@ -23,7 +23,7 @@ if (isset($_POST['remove'])) {
 }
 
 if (isset($_POST['success_products'])) {
-    $code = $_POST['create'];
+    $code = $_POST['create_success'];
     responseData("update orders set type_order = '6' where id_user='$id_user'and code_orders= '$code'");
 }
 function billsUser($dataHistory)

@@ -131,7 +131,7 @@ include_once "history_controller.php";
                         <td rowspan="<?php echo $rowspanProducts ?>" class="align-middle">
                             <?php if(getTypeOrder($orders) ==='Vận chuyển thành công'){ ?>
                             <form method="post">
-                                <input type="text" name="create" value="<?php echo $orders ?>" hidden="">
+                                <input type="text" name="create_success" value="<?php echo $orders ?>" hidden="">
                                 <button name='success_products' class="btn btn-success text-white">
                                     Đã nhận hàng
                                 </button>
